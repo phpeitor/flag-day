@@ -42,7 +42,7 @@ body {
 }
 
 .star {
-  --star-size: 100px; /* Aumentamos el tamaño de la estrella */
+  --star-size: 100px; 
   --star-life: 2s;
 
   --start-left: 0px;
@@ -55,7 +55,7 @@ body {
   height: var(--star-size);
   left: var(--end-left);
   top: var(--end-top);
-  background: url('flag.png') no-repeat center center;
+  background: url('../resources/flag.png') no-repeat center center;
   background-size: contain;
   position: absolute;
   animation: slide var(--star-life) ease-in forwards;
