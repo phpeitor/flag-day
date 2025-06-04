@@ -44,13 +44,10 @@ body {
 .star {
   --star-size: 100px; 
   --star-life: 2s;
-
   --start-left: 0px;
   --start-top: 0px;
-
   --end-left: 0px;
   --end-top: 0px;
-
   width: var(--star-size);
   height: var(--star-size);
   left: var(--end-left);
