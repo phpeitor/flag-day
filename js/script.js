@@ -69,5 +69,5 @@ setInterval(() => {
 
     newStar.pop();
   }, newStar.life * 1000);
-  
+
 }, STAR_INTERVAL);
