@@ -3,7 +3,7 @@
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/drphp/)
 
 Conmemorando el Día de la Bandera 🇵🇪. Puedes ajustar los estilos según tus necesidades para mejorar la visualización y adaptarlo a tus preferencias.
-Para utilizar este proyecto, sigue estos pasos:
+Para utilizar este proyecto sigue estos pasos:
 
 ## 🚀 Quick Start
 
