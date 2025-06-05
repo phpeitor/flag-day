@@ -20,7 +20,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: -1;
   opacity: 0.7; 
-  filter: brightness(0.8); 
+  filter: brightness(0.9); 
 }
 
 :root {
@@ -122,12 +122,12 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -30%) rotate(-45deg) scale(1);
-  background: rgba(255, 0, 0, 0.511);
+  background: rgba(255, 0, 0, 0.579);
   width: 80px;
   height: 80px;
   position: absolute;
   z-index: 100;
-  filter: blur(0.5px);
+  filter: blur(0.2px);
   -webkit-animation: ball-queen 21s cubic-bezier(0.32, 2, 0.59, 2) infinite;
           animation: ball-queen 21s cubic-bezier(0.32, 2, 0.59, 2) infinite;
 }
@@ -281,10 +281,10 @@ img {
 }
 
 .ball-1, .ball-2, .ball-3, .ball-4 {
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
   z-index: 2;
-  filter: blur(20px);
+  filter: blur(0.5px);
 }
 
 .ball-1 {
