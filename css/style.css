@@ -371,7 +371,7 @@ img {
 :root {
   --color: var(--yellow-5);
   --shadow: var(--yellow-8);
-  --glare: hsla(63, 89%, 57%, 0.75);
+  --glare: hsla(56, 98%, 52%, 0.638);
   --font-size: var(--font-size-fluid-3);
   --transition: 0.2s;
 }
