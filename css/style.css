@@ -36,7 +36,6 @@ body {
   line-height: var(--text-height);
   color: white;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 5px;
   z-index: 100;
   position: relative;
@@ -99,7 +98,8 @@ img {
 
 .ball {
   border-radius: 50%;
-  background: #FF3C32;
+  background: #ff3c3294;
+  border: #1c1c1c 1px solid;
   width: 150px;
   height: 150px;
   position: absolute;
@@ -108,11 +108,10 @@ img {
 
 .balls {
   padding: 20px;
-  background: #5407070a;
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 5em;
+  padding: 4em;
 }
 
 .heart {
@@ -122,7 +121,7 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -30%) rotate(-45deg) scale(1);
-  background: #FF3C32;
+  background: #f61509b2;
   width: 80px;
   height: 80px;
   position: absolute;
@@ -147,7 +146,7 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: #FF3C32;
+  background: #f61509b2;
 }
 .heart::before {
   left: 50%;
@@ -284,7 +283,8 @@ img {
   width: 30px;
   height: 30px;
   z-index: 2;
-  filter: blur(1.5px);
+  filter: blur(1px);
+  border: #1c1c1c 1px solid;
 }
 
 .ball-1 {
