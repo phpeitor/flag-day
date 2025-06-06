@@ -481,37 +481,43 @@ a svg {
 	transform: translate(-50%, -50%) scale(0);
 }
 
-a svg:nth-of-type(1) {
+a svg:nth-of-type(2) {
 	--x: 0;
 	--y: 20;
 	--s: 1.1;
 	--d: 1;
 }
 
-a svg:nth-of-type(2) {
-	--x: 15;
+a svg:nth-of-type(3) {
+	--x: 55;
 	--y: 80;
 	--s: 1.25;
 	--d: 2;
 }
 
-a svg:nth-of-type(3) {
-	--x: 45;
-	--y: 40;
-	--s: 1.1;
-	--d: 3;
+.spark {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  color: gold; 
+  opacity: 0;
+  pointer-events: none;
+  animation: spark 2s infinite;
 }
 
-a svg:nth-of-type(4) {
-	--x: 75;
-	--y: 60;
-	--s: 0.9;
-	--d: 2;
+@keyframes spark {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
 }
 
-a svg:nth-of-type(5) {
-	--x: 100;
-	--y: 30;
-	--s: 0.8;
-	--d: 4;
+.spark:nth-child(1) {
+  left: 10%;
+  top: 20%;
+  animation-delay: 0s;
 }
