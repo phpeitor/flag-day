@@ -7,8 +7,6 @@ Para utilizar este proyecto sigue estos pasos:
 
 ## 🚀 Quick Start
 
-Sigue estos pasos para dar vida a tu gráfico de contribuciones:
-
 1. **Clonar este repositorio**
 ```bash
 git clone https://github.com/phpeitor/flag-day.git
