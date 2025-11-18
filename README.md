@@ -1,5 +1,5 @@
 # Flag Day 🇵🇪🦙
-[![forthebadge](http://forthebadge.com/images/badges/made-with-css.svg)](https://www.linkedin.com/in/drphp/)
+[![forthebadge](http://forthebadge.com/images/badges/uses-css.svg)](https://www.linkedin.com/in/drphp/)
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/drphp/)
 
 Conmemorando el Día de la Bandera 🇵🇪. Puedes ajustar los estilos según tus necesidades para mejorar la visualización y adaptarlo a tus preferencias.
