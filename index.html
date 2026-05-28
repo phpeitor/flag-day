@@ -18,10 +18,37 @@
 </div>
 
 <div class="layer">
+  
+  <!-- Corazón separado fuera de .balls para evitar recorte por padding/overflow -->
+  <div class="heart" aria-hidden="false">
+    <svg class="heart-svg" viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corazón con banda de la bandera del Perú">
+      <defs>
+        <linearGradient id="heartGrad" x1="0" x2="1">
+          <stop offset="0%" stop-color="#ff6b6b"/>
+          <stop offset="50%" stop-color="#e53935"/>
+          <stop offset="100%" stop-color="#b71c1c"/>
+        </linearGradient>
+        <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity="0.45"/>
+        </filter>
+        <linearGradient id="sashGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0.8"/>
+        </linearGradient>
+      </defs>
+      <g filter="url(#softShadow)">
+        <path class="heart-shape" d="M120 210s-90-48-90-115c0-38 31-70 70-70 24 0 40 13 45 20 5-7 21-20 45-20 39 0 70 32 70 70 0 67-90 115-90 115z" fill="url(#heartGrad)"/>
+        <g transform="rotate(-22 120 110)">
+          <rect x="12" y="98" width="216" height="28" rx="14" fill="url(#sashGrad)" opacity="0.98"/>
+          <rect x="12" y="107" width="216" height="8" rx="4" fill="#c1121f"/>
+        </g>
+        <path class="gloss" d="M40 30c20-18 70-26 100 0 30-26 80-18 100 0v40c-40-60-160-40-200 0z" fill="rgba(255,255,255,0.12)"/>
+      </g>
+    </svg>
+    <div class="heart-badge">Perú</div>
+  </div>
+  
   <div class="balls"> 
-    <div class="heart">
-      <div class="ribbon"></div>
-    </div>
     <div class="ball ball-1"></div>
     <div class="ball ball-2"></div>
     <div class="ball ball-3"></div>

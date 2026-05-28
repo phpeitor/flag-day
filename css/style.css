@@ -8,7 +8,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
 }
 
@@ -31,18 +31,20 @@ body {
 }
 
 .sparkle {
-  width: 600px;
-  height: var(--text-height);
-  font-size: 50px;
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  font-size: 56px;
   font-family: 'Dancing Script';
   font-weight: 700;
   text-align: center;
-  line-height: var(--text-height);
+  line-height: 1;
   color: white;
-  letter-spacing: 5px;
-  z-index: 100;
-  position: relative;
-  text-shadow: 0px 0px 10px black;
+  letter-spacing: 4px;
+  z-index: 140;
+  text-shadow: 0px 6px 18px rgba(0,0,0,0.6);
 }
 
 .star {
@@ -89,6 +91,7 @@ body {
   align-items: center;
   justify-content: center;
   filter: contrast(0.6);
+  overflow: visible;
 }
 
 img {
@@ -108,52 +111,96 @@ img {
 }
 
 .balls {
-  padding: 20px;
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 4em;
+  padding: 0; /* eliminar padding que podía recortar o desplazar elementos */
+  pointer-events: none;
+  overflow: visible;
 }
 
+/* Corazón central mejorado */
 .heart {
-  --rotate: -40deg;
-  --translate: -50%,-50%;
-  --scale: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -30%) rotate(-45deg) scale(1);
-  background: #f61206a2;
-  width: 80px;
-  height: 80px;
   position: absolute;
-  z-index: 100;
-  filter: blur(0.2px);
-  -webkit-animation: ball-queen 21s cubic-bezier(0.32, 2, 0.59, 2) infinite;
-          animation: ball-queen 21s cubic-bezier(0.32, 2, 0.59, 2) infinite;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -48%);
+  width: 360px;
+  height: 320px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  will-change: transform;
+  animation: heartFloat 6s ease-in-out infinite;
 }
 
-.heart .ribbon {
-  position: absolute;
-  width: 150%;
-  height: 15%;
-  background: #FFF;
-  top: 35%;
-  z-index: 200;
-}
-.heart::before, .heart::after {
-  content: "";
-  position: absolute;
-  display: block;
+.heart-svg {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  background: #f61206a2;
+  display: block;
+  transform-origin: center;
+  transition: transform 0.25s ease;
+  overflow: visible;
 }
-.heart::before {
-  left: 50%;
+
+.heart-shape {
+  transform-origin: center;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  animation: heartbeat 2.6s ease-in-out infinite;
 }
-.heart::after {
-  top: -50%;
+
+.gloss {
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  filter: blur(2px);
+}
+
+.heart-badge {
+  position: absolute;
+  bottom: 10%;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.25);
+  padding: 6px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  z-index: 410;
+}
+
+/* Empujar el contenedor de botones/logo ligeramente hacia abajo para evitar solapamiento con el corazón */
+.button-container {
+  bottom: 14px; /* más cerca del borde inferior */
+}
+
+.heart:hover .heart-svg {
+  transform: scale(1.04) rotate(-2deg);
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  10% { transform: scale(1.03); }
+  20% { transform: scale(0.98); }
+  30% { transform: scale(1.02); }
+  40% { transform: scale(1); }
+}
+
+@keyframes heartFloat {
+  0%,100% { transform: translate(-50%,-35%) translateY(-6px); }
+  50% { transform: translate(-50%,-35%) translateY(6px); }
+}
+
+@media (max-width: 750px) {
+  .heart { width: 220px; height: 200px; }
+  .heart-badge { font-size: 1.4rem; }
+  .sparkle { top: 16%; font-size: 36px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heart, .heart-shape, .heart-svg { animation: none; transition: none; }
 }
 @-webkit-keyframes ball-queen {
   0%, 3% {
