@@ -1,8 +1,7 @@
-# 🇵🇪 Día de la Bandera (Flag Day)
+# 🇵🇪 Día de la Bandera
 
 [![forthebadge](http://forthebadge.com/images/badges/uses-css.svg)](https://www.linkedin.com/in/drphp/)
 [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://www.linkedin.com/in/drphp/)
-[![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://www.linkedin.com/in/drphp/)
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/drphp/)
 
 Una **landing page interactiva** construida desde cero para conmemorar el **Día de la Bandera del Perú**. Este proyecto destaca por el uso avanzado de técnicas en UI/UX sin la necesidad de dependencias externas o frameworks (Zero-Dependencies).
