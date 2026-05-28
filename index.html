@@ -51,32 +51,33 @@
 
 <div class="layer">
   <div class="heart" aria-hidden="false">
-    <!-- viewBox ampliado y centrado para evitar por completo el recorte de sombras y path -->
-    <svg class="heart-svg" viewBox="-40 -30 320 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corazón con banda de la bandera del Perú">
+    <svg class="heart-svg" viewBox="-40 -30 320 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corazón con banda de la bandera del Perú">
       <defs>
+        <clipPath id="heartClip">
+          <path d="M 120 213.5 l -14.5 -13.2 C 54 153.6 20 122.8 20 85 C 20 54.2 44.2 30 75 30 c 17.4 0 34.1 8.1 45 20.9 c 10.9 -12.8 27.6 -20.9 45 -20.9 c 30.8 0 55 24.2 55 55 c 0 37.8 -34 68.6 -85.5 115.4 Z" />
+        </clipPath>
         <linearGradient id="heartGrad" x1="0" x2="1">
-          <!-- Transparencia para dejar ver la bandera -->
-          <stop offset="0%" stop-color="#ff6b6b" stop-opacity="0.65"/>
-          <stop offset="50%" stop-color="#e53935" stop-opacity="0.75"/>
-          <stop offset="100%" stop-color="#b71c1c" stop-opacity="0.8"/>
+          <stop offset="0%" stop-color="#ff6b6b" stop-opacity="0.45"/>
+          <stop offset="50%" stop-color="#e53935" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#b71c1c" stop-opacity="0.6"/>
         </linearGradient>
         <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
-          <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity="0.45"/>
+          <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.55"/>
         </filter>
         <linearGradient id="sashGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
-          <stop offset="100%" stop-color="#ffffff" stop-opacity="0.7"/>
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0.75"/>
         </linearGradient>
       </defs>
-      <g filter="url(#softShadow)">
-        <path class="heart-shape" d="M120 214s-90-54-90-124c0-38 31-70 70-70 24 0 40 13 45 20 5-7 21-20 45-20 39 0 70 32 70 70 0 70-90 124-90 124z" fill="url(#heartGrad)"/>
-        <!-- Franja más delgada y perfectamente centrada -->
-        <g transform="rotate(-26 120 110)">
-          <rect x="-24" y="104" width="288" height="12" rx="6" fill="url(#sashGrad)"/>
-          <rect x="-24" y="108" width="288" height="4" rx="2" fill="#c1121f" opacity="0.9"/>
+      <g filter="url(#softShadow)" class="heart-shape">
+        <path d="M 120 213.5 l -14.5 -13.2 C 54 153.6 20 122.8 20 85 C 20 54.2 44.2 30 75 30 c 17.4 0 34.1 8.1 45 20.9 c 10.9 -12.8 27.6 -20.9 45 -20.9 c 30.8 0 55 24.2 55 55 c 0 37.8 -34 68.6 -85.5 115.4 Z" fill="url(#heartGrad)"/>
+        <g clip-path="url(#heartClip)">
+          <g transform="rotate(-35 120 120)">
+            <rect x="-60" y="100" width="360" height="40" fill="url(#sashGrad)"/>
+            <rect x="-60" y="112" width="360" height="16" fill="#c1121f" opacity="0.95"/>
+          </g>
+          <path class="gloss" d="M42 28c16-12 34-18 58-18 18 0 34 4 46 12 12-8 28-12 46-12 24 0 42 6 58 18v34c-36-34-66-24-104 4-38-28-68-38-104-4z" fill="rgba(255,255,255,0.15)"/>
         </g>
-        <!-- Brillo ajustado -->
-        <path class="gloss" d="M42 28c16-12 34-18 58-18 18 0 34 4 46 12 12-8 28-12 46-12 24 0 42 6 58 18v34c-36-34-66-24-104 4-38-28-68-38-104-4z" fill="rgba(255,255,255,0.08)"/>
       </g>
     </svg>
   </div>

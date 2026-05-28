@@ -143,12 +143,12 @@ img {
   transform-origin: center;
   transition: transform 0.25s ease;
   overflow: visible;
+  animation: heartbeat 2.6s ease-in-out infinite;
 }
 
 .heart-shape {
-  transform-origin: center;
-  transition: transform 0.25s ease, filter 0.25s ease;
-  animation: heartbeat 2.6s ease-in-out infinite;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
 }
 
 .gloss {
@@ -289,14 +289,14 @@ img {
 }
 
 @keyframes heartbeat {
-  0%   { transform: scale(0.95); }
+  0%   { transform: scale(1); }
   50%  { transform: scale(1.15); }
-  100% { transform: scale(0.95); }
+  100% { transform: scale(1); }
 }
 
 @keyframes heartFloat {
-  0%,100% { transform: translate(-50%,-35%) translateY(-6px); }
-  50% { transform: translate(-50%,-35%) translateY(6px); }
+  0%,100% { transform: translate(-50%,-48%) translateY(-8px); }
+  50% { transform: translate(-50%,-48%) translateY(8px); }
 }
 
 @media (max-width: 750px) {
