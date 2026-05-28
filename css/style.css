@@ -125,8 +125,8 @@ img {
   top: 45%;
   left: 50%;
   transform: translate(-50%, -48%);
-  width: 360px;
-  height: 320px;
+  width: 380px;
+  height: 340px;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -159,16 +159,23 @@ img {
 
 .heart-badge {
   position: absolute;
-  bottom: 10%;
+  bottom: 6%;
   font-family: 'Dancing Script', cursive;
-  font-size: 2rem;
-  color: white;
-  text-shadow: 0 4px 18px rgba(0,0,0,0.6);
-  background: rgba(0,0,0,0.25);
-  padding: 6px 12px;
-  border-radius: 20px;
-  backdrop-filter: blur(4px);
+  font-size: 1.9rem;
+  color: #f8f8f8;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.75);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  backdrop-filter: none;
   z-index: 410;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+}
+
+.heart-badge::before {
+  content: none;
 }
 
 
@@ -282,11 +289,9 @@ img {
 }
 
 @keyframes heartbeat {
-  0%,100% { transform: scale(1); }
-  10% { transform: scale(1.03); }
-  20% { transform: scale(0.98); }
-  30% { transform: scale(1.02); }
-  40% { transform: scale(1); }
+  0%   { transform: scale(0.95); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(0.95); }
 }
 
 @keyframes heartFloat {
@@ -295,8 +300,8 @@ img {
 }
 
 @media (max-width: 750px) {
-  .heart { width: 220px; height: 200px; }
-  .heart-badge { font-size: 1.4rem; }
+  .heart { width: 250px; height: 225px; }
+  .heart-badge { font-size: 1.35rem; }
   .sparkle { top: 16%; font-size: 36px; }
 }
 
@@ -565,6 +570,7 @@ span:last-of-type {
     var(--glare) 70% 85%,
     transparent 85%
   ) calc(var(--pos) * -200%) 0% / 200% 100%, var(--color);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   z-index: 2;
