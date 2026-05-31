@@ -81,83 +81,87 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!logoImg) return;
 
         logoEl.addEventListener('click', function () {
-            if (document.querySelector('.logo-lightbox')) {
-                return;
-            }
-
-            const rect = logoEl.getBoundingClientRect();
-            const logoCX = rect.left + rect.width / 2;
-            const logoCY = rect.top + rect.height / 2;
-            const vpCX = window.innerWidth / 2;
-            const vpCY = window.innerHeight / 2;
-            const dx = logoCX - vpCX;
-            const dy = logoCY - vpCY;
-
-            const overlay = document.createElement('div');
-            overlay.className = 'logo-lightbox';
-            overlay.style.setProperty('--lbx', dx + 'px');
-            overlay.style.setProperty('--lby', dy + 'px');
-
-            const img = document.createElement('img');
-            img.src = logoImg.src;
-            img.className = 'logo-lightbox__img';
-            img.alt = 'Logo';
-
-            const closeBtn = document.createElement('button');
-            closeBtn.className = 'logo-lightbox__close';
-            closeBtn.setAttribute('aria-label', 'Cerrar');
-            closeBtn.innerHTML = '&times;';
-
-            overlay.appendChild(img);
-            overlay.appendChild(closeBtn);
-            document.body.appendChild(overlay);
-
-            requestAnimationFrame(function () {
-                requestAnimationFrame(function () {
-                    overlay.classList.add('logo-lightbox--open');
-                });
-            });
-
-            function onKey(e) {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            }
-
-            function closeLightbox() {
-                document.removeEventListener('keydown', onKey);
-                overlay.classList.remove('logo-lightbox--open');
-                overlay.classList.add('logo-lightbox--closing');
-                window.setTimeout(function () {
-                    overlay.remove();
-                }, 420);
-            }
-
-            closeBtn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                closeLightbox();
-            });
-
-            overlay.addEventListener('click', function (e) {
-                if (e.target === overlay) closeLightbox();
-            });
-
-            document.addEventListener('keydown', onKey);
+          openImageLightbox(logoImg.src, 'Logo', logoEl);
         });
     }());
+
+        function openImageLightbox(imageSrc, imageAlt, triggerElement) {
+          if (document.querySelector('.logo-lightbox')) {
+            return;
+          }
+
+          const rect = triggerElement.getBoundingClientRect();
+          const elementCX = rect.left + rect.width / 2;
+          const elementCY = rect.top + rect.height / 2;
+          const vpCX = window.innerWidth / 2;
+          const vpCY = window.innerHeight / 2;
+          const dx = elementCX - vpCX;
+          const dy = elementCY - vpCY;
+
+          const overlay = document.createElement('div');
+          overlay.className = 'logo-lightbox';
+          overlay.style.setProperty('--lbx', dx + 'px');
+          overlay.style.setProperty('--lby', dy + 'px');
+
+          const img = document.createElement('img');
+          img.src = imageSrc;
+          img.className = 'logo-lightbox__img';
+          img.alt = imageAlt;
+
+          const closeBtn = document.createElement('button');
+          closeBtn.className = 'logo-lightbox__close';
+          closeBtn.setAttribute('aria-label', 'Cerrar');
+          closeBtn.innerHTML = '&times;';
+
+          overlay.appendChild(img);
+          overlay.appendChild(closeBtn);
+          document.body.appendChild(overlay);
+
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              overlay.classList.add('logo-lightbox--open');
+            });
+          });
+
+          function onKey(e) {
+            if (e.key === 'Escape') {
+              closeLightbox();
+            }
+          }
+
+          function closeLightbox() {
+            document.removeEventListener('keydown', onKey);
+            overlay.classList.remove('logo-lightbox--open');
+            overlay.classList.add('logo-lightbox--closing');
+            window.setTimeout(function () {
+              overlay.remove();
+            }, 420);
+          }
+
+          closeBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            closeLightbox();
+          });
+
+          overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) closeLightbox();
+          });
+
+          document.addEventListener('keydown', onKey);
+        }
 
         // ===================== Slider de evolución de banderas =====================
         (function () {
           const sliderRoot = document.getElementById('flag-slider');
           if (!sliderRoot) return;
 
-          const flagItems = [
-            { src: './resources/flag1.png', label: 'Bandera 1 de 5' },
-            { src: './resources/flag2.png', label: 'Bandera 2 de 5' },
-            { src: './resources/flag3.png', label: 'Bandera 3 de 5' },
-            { src: './resources/flag4.png', label: 'Bandera 4 de 5' },
-            { src: './resources/flag5.png', label: 'Bandera 5 de 5' }
-          ];
+          const flagItems = Array.from({ length: 5 }, (_, index) => {
+            const flagNumber = index + 1;
+            return {
+              src: `./resources/flag${flagNumber}.png`,
+              label: `Bandera ${flagNumber} de 5`
+            };
+          });
 
           flagItems.forEach((flag) => {
             const preloadImage = new Image();
@@ -182,10 +186,38 @@ document.addEventListener('DOMContentLoaded', () => {
           ].join('');
 
           const sliderImage = sliderRoot.querySelector('.flag-slider__img');
+          const sliderFrame = sliderRoot.querySelector('.flag-slider__frame');
           const sliderCaption = sliderRoot.querySelector('.flag-slider__caption');
           const dotsContainer = sliderRoot.querySelector('.flag-slider__dots');
           const prevButton = sliderRoot.querySelector('[data-direction="prev"]');
           const nextButton = sliderRoot.querySelector('[data-direction="next"]');
+
+          const sparksContainer = document.querySelector('.button-container');
+          if (sparksContainer) {
+            sliderFrame.appendChild(sparksContainer);
+          }
+
+          sliderFrame.setAttribute('role', 'button');
+          sliderFrame.setAttribute('tabindex', '0');
+          sliderFrame.setAttribute('aria-label', 'Abrir bandera ampliada');
+          sliderFrame.style.cursor = 'zoom-in';
+
+          function getCurrentFlag() {
+            return flagItems[currentIndex];
+          }
+
+          function openCurrentFlagLightbox() {
+            const currentFlag = getCurrentFlag();
+            openImageLightbox(currentFlag.src, currentFlag.label, sliderFrame);
+          }
+
+          sliderFrame.addEventListener('click', openCurrentFlagLightbox);
+          sliderFrame.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openCurrentFlagLightbox();
+            }
+          });
 
           const dots = flagItems.map((flag, index) => {
             const dot = document.createElement('button');
@@ -284,12 +316,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const sparkPath = "M93.781 51.578C95 50.969 96 49.359 96 48c0-1.375-1-2.969-2.219-3.578 0 0-22.868-1.514-31.781-10.422-8.915-8.91-10.438-31.781-10.438-31.781C50.969 1 49.375 0 48 0s-2.969 1-3.594 2.219c0 0-1.5 22.87-10.406 31.781-8.908 8.913-31.781 10.422-31.781 10.422C1 45.031 0 46.625 0 48c0 1.359 1 2.969 2.219 3.578 0 0 22.873 1.51 31.781 10.422 8.906 8.911 10.406 31.781 10.406 31.781C45.031 95 46.625 96 48 96s2.969-1 3.562-2.219c0 0 1.523-22.871 10.438-31.781 8.913-8.908 31.781-10.422 31.781-10.422Z";
         let sparksHTML = "";
         
-        // 9 Ambient blinking yellow sparks
         for (let i = 1; i <= 9; i++) {
             sparksHTML += `<svg class="spark spark-${i}" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="${sparkPath}" fill="#000"/></svg>`;
         }
         
-        // 9 Interaction explosion sparks
         for (let i = 1; i <= 9; i++) {
             sparksHTML += `<svg class="hover-spark hover-spark-${i}" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="${sparkPath}" fill="#000"/></svg>`;
         }
