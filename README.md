@@ -4,7 +4,10 @@
 [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://www.linkedin.com/in/drphp/)
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/drphp/)
 
-Una **landing page interactiva** construida desde cero para conmemorar el **Día de la Bandera del Perú**. Este proyecto destaca por el uso avanzado de técnicas en UI/UX sin la necesidad de dependencias externas o frameworks (Zero-Dependencies).
+[![Video](https://img.youtube.com/vi/QFztjXxPTJw/0.jpg)](https://www.youtube.com/watch?v=QFztjXxPTJw)  
+[Ver proyecto original / demo](https://www.youtube.com/watch?v=QFztjXxPTJw)
+
+Una **landing page interactiva** construida desde cero para conmemorar el **Día de la Bandera del Perú**. Este proyecto destaca por el uso avanzado de técnicas en UI/UX (Zero-Dependencies).
 
 ## ✨ Características Principales
 
@@ -39,11 +42,6 @@ cd flag-day
 2. **Despliegue Local:**
 * Puedes usar tu servidor web local activo (ej. **Apache24**, Live Server, etc).
 * También basta con hacer doble clic en el archivo `index.html` para abrirlo directamente en el navegador.
-
-## 📺 Demo
-
-[![Video](https://img.youtube.com/vi/QFztjXxPTJw/0.jpg)](https://www.youtube.com/watch?v=QFztjXxPTJw)  
-[Ver proyecto original / demo](https://www.youtube.com/watch?v=QFztjXxPTJw)
 
 ---
 *If you're interested in knowing the powerlevel configuration to get this prompt, have a look at [this gist](https://github.com/phpeitor/).*

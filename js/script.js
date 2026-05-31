@@ -146,6 +146,139 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }());
 
+        // ===================== Slider de evolución de banderas =====================
+        (function () {
+          const sliderRoot = document.getElementById('flag-slider');
+          if (!sliderRoot) return;
+
+          const flagItems = [
+            { src: './resources/flag1.png', label: 'Bandera 1 de 5' },
+            { src: './resources/flag2.png', label: 'Bandera 2 de 5' },
+            { src: './resources/flag3.png', label: 'Bandera 3 de 5' },
+            { src: './resources/flag4.png', label: 'Bandera 4 de 5' },
+            { src: './resources/flag5.png', label: 'Bandera 5 de 5' }
+          ];
+
+          flagItems.forEach((flag) => {
+            const preloadImage = new Image();
+            preloadImage.src = flag.src;
+          });
+
+          let currentIndex = 0;
+          let autoplayId = null;
+          let fadeTimeoutId = null;
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+          sliderRoot.innerHTML = [
+            '<p class="flag-slider__title">Evolución de la bandera</p>',
+            '<div class="flag-slider__frame">',
+            '  <img class="flag-slider__img" src="./resources/flag1.png" alt="Bandera 1 de 5">',
+            '</div>',
+            '<p class="flag-slider__caption">Bandera 1 de 5</p>',
+            '<div class="flag-slider__controls">',
+            '  <button type="button" class="flag-slider__control" data-direction="prev" aria-label="Ver bandera anterior">‹</button>',
+            '  <div class="flag-slider__dots" aria-label="Indicadores de la evolución"></div>',
+            '  <button type="button" class="flag-slider__control" data-direction="next" aria-label="Ver bandera siguiente">›</button>',
+            '</div>'
+          ].join('');
+
+          const sliderImage = sliderRoot.querySelector('.flag-slider__img');
+          const sliderCaption = sliderRoot.querySelector('.flag-slider__caption');
+          const dotsContainer = sliderRoot.querySelector('.flag-slider__dots');
+          const prevButton = sliderRoot.querySelector('[data-direction="prev"]');
+          const nextButton = sliderRoot.querySelector('[data-direction="next"]');
+
+          const dots = flagItems.map((flag, index) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'flag-slider__dot';
+            dot.setAttribute('aria-label', `Ir a ${flag.label}`);
+            dot.addEventListener('click', () => showFlag(index));
+            dotsContainer.appendChild(dot);
+            return dot;
+          });
+
+          function setActiveDot(index) {
+            dots.forEach((dot, dotIndex) => {
+              dot.classList.toggle('is-active', dotIndex === index);
+              if (dotIndex === index) {
+                dot.setAttribute('aria-current', 'true');
+              } else {
+                dot.removeAttribute('aria-current');
+              }
+            });
+          }
+
+          function showFlag(nextIndex) {
+            const normalizedIndex = (nextIndex + flagItems.length) % flagItems.length;
+            currentIndex = normalizedIndex;
+
+            if (fadeTimeoutId) {
+              window.clearTimeout(fadeTimeoutId);
+            }
+
+            if (!reduceMotion) {
+              sliderImage.classList.add('is-fading');
+            }
+
+            fadeTimeoutId = window.setTimeout(() => {
+              const currentFlag = flagItems[currentIndex];
+              sliderImage.src = currentFlag.src;
+              sliderImage.alt = currentFlag.label;
+              sliderCaption.textContent = currentFlag.label;
+              setActiveDot(currentIndex);
+
+              if (reduceMotion) {
+                sliderImage.classList.remove('is-fading');
+                return;
+              }
+
+              requestAnimationFrame(() => {
+                sliderImage.classList.remove('is-fading');
+              });
+            }, reduceMotion ? 0 : 180);
+          }
+
+          function startAutoplay() {
+            if (reduceMotion || autoplayId) {
+              return;
+            }
+
+            autoplayId = window.setInterval(() => {
+              showFlag(currentIndex + 1);
+            }, 2600);
+          }
+
+          function stopAutoplay() {
+            if (!autoplayId) {
+              return;
+            }
+
+            window.clearInterval(autoplayId);
+            autoplayId = null;
+          }
+
+          prevButton.addEventListener('click', () => {
+            showFlag(currentIndex - 1);
+            stopAutoplay();
+            startAutoplay();
+          });
+
+          nextButton.addEventListener('click', () => {
+            showFlag(currentIndex + 1);
+            stopAutoplay();
+            startAutoplay();
+          });
+
+          sliderRoot.addEventListener('mouseenter', stopAutoplay);
+          sliderRoot.addEventListener('mouseleave', startAutoplay);
+          sliderRoot.addEventListener('focusin', stopAutoplay);
+          sliderRoot.addEventListener('focusout', startAutoplay);
+
+          setActiveDot(currentIndex);
+          startAutoplay();
+        }());
+
     // ===================== Generador de Sparks y Balls =====================
     const actionBtn = document.getElementById('action-btn');
     if (actionBtn) {
