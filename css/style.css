@@ -302,11 +302,14 @@ img {
   aspect-ratio: 16 / 9;
   border-radius: 10px;
   overflow: hidden;
+  isolation: isolate;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.06);
 }
 
 .flag-slider__img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -314,6 +317,79 @@ img {
   opacity: 1;
   transform: scale(1);
   transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.flag-slider__sparks {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.flag-slider__spark {
+  position: absolute;
+  width: 18%;
+  height: 18%;
+  color: #ffd94d;
+  opacity: 0.92;
+  filter: drop-shadow(0 0 6px rgba(255, 217, 77, 0.95));
+  transform-origin: center;
+  animation: flagSparkPulse 1.8s ease-in-out infinite;
+}
+
+.flag-slider__spark path {
+  fill: currentColor;
+}
+
+.flag-slider__spark-1 {
+  left: 56%;
+  top: 18%;
+  width: 14%;
+  height: 14%;
+  animation-delay: 0s;
+}
+
+.flag-slider__spark-2 {
+  left: 70%;
+  top: 26%;
+  width: 12%;
+  height: 12%;
+  animation-delay: 0.25s;
+}
+
+.flag-slider__spark-3 {
+  left: 78%;
+  top: 46%;
+  width: 16%;
+  height: 16%;
+  animation-delay: 0.5s;
+}
+
+.flag-slider__spark-4 {
+  left: 66%;
+  top: 60%;
+  width: 13%;
+  height: 13%;
+  animation-delay: 0.8s;
+}
+
+.flag-slider__spark-5 {
+  left: 54%;
+  top: 72%;
+  width: 11%;
+  height: 11%;
+  animation-delay: 1.05s;
+}
+
+@keyframes flagSparkPulse {
+  0%, 100% {
+    transform: scale(0.86) rotate(0deg);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.08) rotate(20deg);
+    opacity: 1;
+  }
 }
 
 .flag-slider__img.is-fading {
