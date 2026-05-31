@@ -282,24 +282,24 @@ img {
 .flag-slider {
   position: fixed;
   left: 50%;
-  top: 14px;
+  bottom: 48px;
   transform: translateX(-50%);
-  width: min(72vw, 220px);
-  padding: 8px 10px 10px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: linear-gradient(180deg, rgba(9, 13, 21, 0.56), rgba(9, 13, 21, 0.28));
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(8px) saturate(120%);
+  width: min(52vw, 132px);
+  padding: 4px 6px 6px;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(180deg, rgba(9, 13, 21, 0.5), rgba(9, 13, 21, 0.24));
+  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(7px) saturate(115%);
   color: #f7f1e6;
   overflow: hidden;
   z-index: 105;
 }
 
 .flag-slider__title {
-  margin: 0 0 6px;
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  margin: 0 0 2px;
+  font-size: 0.46rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.82;
 }
@@ -308,9 +308,9 @@ img {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -330,8 +330,8 @@ img {
 }
 
 .flag-slider__caption {
-  margin: 8px 0 0;
-  font-size: 0.84rem;
+  margin: 4px 0 0;
+  font-size: 0.56rem;
   font-weight: 600;
   text-align: center;
 }
@@ -340,18 +340,18 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  margin-top: 8px;
+  gap: 4px;
+  margin-top: 4px;
 }
 
 .flag-slider__control {
-  width: 30px;
-  height: 30px;
+  width: 18px;
+  height: 18px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.68rem;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
 }
@@ -370,13 +370,13 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 3px;
   flex: 1;
 }
 
 .flag-slider__dot {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
   border: 0;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.35);
@@ -424,22 +424,22 @@ img {
   .heart-badge { font-size: 1.35rem; }
   .sparkle { top: 16%; font-size: 36px; }
   .flag-slider {
-    top: 10px;
-    width: min(84vw, 200px);
-    padding: 7px 9px 9px;
+    bottom: 38px;
+    width: min(68vw, 122px);
+    padding: 3px 5px 5px;
   }
 
   .flag-slider__title {
-    font-size: 0.62rem;
+    font-size: 0.42rem;
   }
 
   .flag-slider__caption {
-    font-size: 0.78rem;
+    font-size: 0.52rem;
   }
 
   .flag-slider__control {
-    width: 28px;
-    height: 28px;
+    width: 16px;
+    height: 16px;
   }
 }
 

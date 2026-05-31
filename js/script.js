@@ -170,7 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
           sliderRoot.innerHTML = [
-            '<p class="flag-slider__title">Evolución de la bandera</p>',
             '<div class="flag-slider__frame">',
             '  <img class="flag-slider__img" src="./resources/flag1.png" alt="Bandera 1 de 5">',
             '</div>',
